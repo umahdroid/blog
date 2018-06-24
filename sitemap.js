@@ -17,14 +17,14 @@ for(var i=0;i<postTitle.length-1;i++){for(var j=i+1;j<postTitle.length;j++){if(s
 if(sortBy=="titledesc"){if(postTitle[i]<postTitle[j]){swapPosts(i,j)}}
 if(sortBy=="dateoldest"){if(postDate[i]>postDate[j]){swapPosts(i,j)}}
 if(sortBy=="datenewest"){if(postDate[i]<postDate[j]){swapPosts(i,j)}}}}}
-function displayToc(filter){var numDisplayed=0;var tocTable='';var tocHead1='JUDUL';var tocTool1='Klik untuk sortir';var tocHead2='POST DATE';var tocTool2='Klik untuk sortir';var tocHead3='LABEL';var tocTool3='';if(sortBy=="titleasc"){tocTool1+=' (descending)';tocTool2+=' (newest first)'}
+function displayToc(filter){var numDisplayed=0;var tocTable='';var tocHead1='POST TITLE';var tocTool1='Click to sort by title';var tocHead2='POST DATE';var tocTool2='Click to sort by date';var tocHead3='LABELS';var tocTool3='';if(sortBy=="titleasc"){tocTool1+=' (descending)';tocTool2+=' (newest first)'}
 if(sortBy=="titledesc"){tocTool1+=' (ascending)';tocTool2+=' (newest first)'}
 if(sortBy=="dateoldest"){tocTool1+=' (ascending)';tocTool2+=' (newest first)'}
 if(sortBy=="datenewest"){tocTool1+=' (ascending)';tocTool2+=' (oldest first)'}
 if(postFilter!=''){tocTool3='Click to show all posts'}
 tocTable+='<table>';tocTable+='<tr>';tocTable+='<td class="toc-header-col1">';tocTable+='<a href="javascript:toggleTitleSort();" title="'+tocTool1+'">'+tocHead1+'</a>';tocTable+='</td>';tocTable+='<td class="toc-header-col2">';tocTable+='<a href="javascript:toggleDateSort();" title="'+tocTool2+'">'+tocHead2+'</a>';tocTable+='</td>';tocTable+='<td class="toc-header-col3">';tocTable+='<a href="javascript:allPosts();" title="'+tocTool3+'">'+tocHead3+'</a>';tocTable+='</td>';tocTable+='</tr>';for(var i=0;i<postTitle.length;i++){if(filter==''){tocTable+='<tr><td class="toc-entry-col1"><a href="'+postUrl[i]+'" title="'+postSum[i]+'">'+postTitle[i]+'</a></td><td class="toc-entry-col2">'+postDate[i]+'</td><td class="toc-entry-col3">'+postLabels[i]+'</td></tr>';numDisplayed++}else{z=postLabels[i].lastIndexOf(filter);if(z!=-1){tocTable+='<tr><td class="toc-entry-col1"><a href="'+postUrl[i]+'" title="'+postSum[i]+'">'+postTitle[i]+'</a></td><td class="toc-entry-col2">'+postDate[i]+'</td><td class="toc-entry-col3">'+postLabels[i]+'</td></tr>';numDisplayed++}}}
-tocTable+='</table>';if(numDisplayed==postTitle.length){var tocNote='<span class="toc-note">Menampilkan all '+postTitle.length+' posts<br/></span>'}
-else{var tocNote='<span class="toc-note">Menampilkan '+numDisplayed+' posts labeled \'';tocNote+=postFilter+'\' of '+postTitle.length+' posts total<br/></span>'}
+tocTable+='</table>';if(numDisplayed==postTitle.length){var tocNote='<span class="toc-note">Displaying all '+postTitle.length+' posts<br/></span>'}
+else{var tocNote='<span class="toc-note">Displaying '+numDisplayed+' posts labeled \'';tocNote+=postFilter+'\' of '+postTitle.length+' posts total<br/></span>'}
 tocdiv.innerHTML=tocNote+tocTable}
 function toggleTitleSort(){if(sortBy=="titleasc"){sortBy="titledesc"}
 else{sortBy="titleasc"}
